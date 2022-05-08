@@ -7,18 +7,34 @@ import { MovimentacaoListComponent } from './components/movimentacao-list/movime
 import { MovimentacaoNewComponent } from './components/movimentacao-new/movimentacao-new.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+
+import {LOCALE_ID} from '@angular/core';
+import {registerLocaleData} from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+import  {  CurrencyMaskModule  } from  "ng2-currency-mask";
+import { CorrenstistaComponent } from './components/correnstista/correnstista.component' ;
+
+registerLocaleData(localePt);
+
 @NgModule({
   declarations: [
     AppComponent,
     MovimentacaoListComponent,
-    MovimentacaoNewComponent
+    MovimentacaoNewComponent,
+    CorrenstistaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
+    CurrencyMaskModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'pt-br'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
